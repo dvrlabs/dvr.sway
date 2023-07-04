@@ -1,0 +1,46 @@
+The native way is to use the custom stylesheet in Firefox: userChrome.css
+
+Firefox does not load userChrome.css by default in Firefox 69 and later. To make the custom stylesheet effective again, open about:config in Firefox and set the preference toolkit.legacyUserProfileCustomizations.stylesheets to true
+
+    Before this answer was updated, Mike G wrote a follow-up answer earlier.
+
+How it works
+
+The following code block is the content of userChrome.css that will hide the tab bar, navigation bar and scrollbars in Firefox. Ensure to use valid element names and IDs.
+
+/*
+ * Do not remove the @namespace line -- it's required for correct functioning
+ */
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"); /* set default namespace to XUL */
+
+/*
+ * Hide tab bar, navigation bar and scrollbars
+ * !important may be added to force override, but not necessary
+ * #content is not necessary to hide scroll bars
+ */
+#TabsToolbar {visibility: collapse;}
+#navigator-toolbox {visibility: collapse;}
+browser {margin-right: -14px; margin-bottom: -14px;}
+
+Limitation: No keyboard shortcuts. Tedious to enable or disable on-demand.
+
+    To restore the default interface, rename userChrome.css to other name like userChrome.tmp and restart Firefox to take effect.
+
+    To use side by side with another instance of Firefox with default interface, use a separate profile.
+
+All profiles are stored in the profile folder, which can be located from Firefox using menu bar or toolbar, then navigate to Help > Troubleshooting Information.
+How to setup and use
+
+The following are generic steps regardless of system platform.
+
+    Run Profile Manager of Firefox, then create a new profile named 'hidebars' (any name of choice) and close the Profile Manager.
+
+    Run a file manager and open the profile folder that was created in step 1.
+
+    Under the new profile folder, create new files chrome/userChrome.css including the parent folder chrome if does not exist.
+
+    Copy and paste the content of userChrome.css from above into the created file in step 3.
+
+    Finally, save and close the file.
+
+To start using, run an instance of Firefox with the new profile.

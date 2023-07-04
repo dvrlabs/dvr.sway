@@ -1,0 +1,114 @@
+set $mod Mod4
+
+set $left h
+set $down j
+set $up k
+set $right l
+
+set $term wezterm
+set $files nautilus
+set $web firefox -new-window -P default-release
+set $chat firefox -no-remote -P webapp -new-window https://discord.com/login
+set $launcher wofi --show run
+set $shellcmd bash -c 'bash -ic "$(wofi --dmenu)"'
+set $wobsock /tmp/wob.sock
+set $mic 'alsa_input.usb-GeneralPlus_USB_Audio_Device-00.mono-fallback'
+set $fake_speaker_mic 'alsa_input.usb-GeneralPlus_USB_Audio_Device-00.mono-fallback.2'
+
+exec_always --no-startup-id pactl set-source-mute $fake_speaker_mic 1
+exec_always ~/.config/sway/createWobSocket.sh &
+
+for_window [title="Firefox — Sharing Indicator"] kill;
+for_window [title="Form"] floating enable
+
+output HDMI-A-1 bg ~/Pictures/wallpapers/pjjob.png fill
+output DVI-D-1 bg ~/Pictures/wallpapers/threeseasons.jpg fill
+output DP-1 bg ~/Pictures/wallpapers/mountain.jpg fill
+
+output HDMI-A-1 resolution 1920x1080 position 0,0 transform 270
+output DVI-D-1 resolution 1920x1080 position 1080,489 
+output DP-1 resolution 1920x1080 position 3000,700
+
+client.focused #00CED1 #285577 #ffffff #2e9ef4 #00CED1
+default_border pixel 3
+gaps outer 5
+gaps inner 5
+floating_modifier $mod normal
+
+bindsym $mod+Return exec $term
+bindsym $mod+q exec $chat
+bindsym $mod+w exec $web
+bindsym $mod+e exec $files
+bindsym $mod+a exec ~/.config/sway/swapAudioOutputs.sh
+bindsym $mod+o exec $launcher
+bindsym $mod+r exec $shellcmd
+bindsym $mod+s exec IMG=~/Pictures/$(date +%Y-%m-%d_%H-%m-%s).png && grim -g "$(slurp)" $IMG && wl-copy < $IMG
+bindsym $mod+F5 reload
+bindsym $mod+c kill
+bindsym $mod+Escape exec swaynag -t warning -m 'This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+bindsym $mod+z exec swaynag -t warning -m "Are you sure you want to suspend your system?" -Z "Suspend" "systemctl suspend" 
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5% && pactl get-sink-volume @DEFAULT_SINK@ | head -n 1| awk '{print substr($5, 1, length($5)-1)}' > $wobsock
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5% && pactl get-sink-volume @DEFAULT_SINK@ | head -n 1 | awk '{print substr($5, 1, length($5)-1)}' > $wobsock
+bindsym $mod+F9 exec ~/.config/sway/toggleMic.sh
+
+
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
+bindsym $mod+Left mark --add "_swap", focus left, swap container with mark "_swap", focus left, unmark "_swap"
+bindsym $mod+Down mark --add "_swap", focus down, swap container with mark "_swap", focus down, unmark "_swap"
+bindsym $mod+Up mark --add "_swap", focus up, swap container with mark "_swap", focus up, unmark "_swap"
+bindsym $mod+Right mark --add "_swap", focus right, swap container with mark "_swap", focus right, unmark "_swap"
+
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+6 workspace number 6
+bindsym $mod+7 workspace number 7
+bindsym $mod+8 workspace number 8
+bindsym $mod+9 workspace number 9
+bindsym $mod+0 workspace number 10
+
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3
+bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5
+bindsym $mod+Shift+6 move container to workspace number 6
+bindsym $mod+Shift+7 move container to workspace number 7
+bindsym $mod+Shift+8 move container to workspace number 8
+bindsym $mod+Shift+9 move container to workspace number 9
+bindsym $mod+Shift+0 move container to workspace number 10
+
+bindsym $mod+t layout toggle split
+bindsym $mod+g layout stacking
+bindsym $mod+b layout tabbed
+
+bindsym $mod+f floating toggle
+bindsym $mod+m fullscreen
+
+bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+minus scratchpad show
+
+bar {
+    swaybar_command waybar
+}
+
+bar {
+    output HDMI-A-1 
+    output DP-1 
+    position top
+    workspace_buttons yes
+}
+
+
+include /etc/sway/config.d/*
+
+
