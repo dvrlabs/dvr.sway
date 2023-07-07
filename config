@@ -8,13 +8,14 @@ set $right l
 set $term wezterm
 set $files nautilus
 set $web firefox -new-window -P default-release
-set $chat firefox -no-remote -P webapp -new-window https://discord.com/login
+set $chat discord
 set $launcher wofi --show run
 set $shellcmd bash -c 'bash -ic "$(wofi --dmenu)"'
 set $wobsock /tmp/wob.sock
 set $mic 'alsa_input.usb-GeneralPlus_USB_Audio_Device-00.mono-fallback'
 set $fake_speaker_mic 'alsa_input.usb-GeneralPlus_USB_Audio_Device-00.mono-fallback.2'
 
+exec_always --no-startup-id mako
 exec_always --no-startup-id pactl set-source-mute $fake_speaker_mic 1
 exec_always ~/.config/sway/createWobSocket.sh &
 
