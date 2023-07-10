@@ -15,6 +15,10 @@ set $wobsock /tmp/wob.sock
 set $mic 'alsa_input.usb-GeneralPlus_USB_Audio_Device-00.mono-fallback'
 set $fake_speaker_mic 'alsa_input.usb-GeneralPlus_USB_Audio_Device-00.mono-fallback.2'
 
+set $left_monitor HDMI-A-1 
+set $middle_monitor DVI-D-1
+set $right_monitor DP-1
+
 exec_always --no-startup-id mako
 exec_always --no-startup-id pactl set-source-mute $fake_speaker_mic 1
 exec_always ~/.config/sway/createWobSocket.sh &
@@ -22,13 +26,13 @@ exec_always ~/.config/sway/createWobSocket.sh &
 for_window [title="Firefox — Sharing Indicator"] kill;
 for_window [title="Form"] floating enable
 
-output HDMI-A-1 bg ~/Pictures/wallpapers/pjjob.png fill
-output DVI-D-1 bg ~/Pictures/wallpapers/threeseasons.jpg fill
-output DP-1 bg ~/Pictures/wallpapers/mountain.jpg fill
+output $left_monitor bg ~/Pictures/wallpapers/pjjob.png fill
+output $middle_monitor bg ~/Pictures/wallpapers/threeseasons.jpg fill
+output $right_monitor bg ~/Pictures/wallpapers/mountain.jpg fill
 
-output HDMI-A-1 resolution 1920x1080 position 0,0 transform 270
-output DVI-D-1 resolution 1920x1080 position 1080,489 
-output DP-1 resolution 1920x1080 position 3000,700
+output $left_monitor resolution 1920x1080 position 0,0 transform 270
+output $middle_monitor resolution 1920x1080 position 1080,489 
+output $right_monitor resolution 1920x1080 position 3000,700
 
 client.focused #00CED1 #285577 #ffffff #2e9ef4 #00CED1
 default_border pixel 3
@@ -65,6 +69,19 @@ bindsym $mod+Left mark --add "_swap", focus left, swap container with mark "_swa
 bindsym $mod+Down mark --add "_swap", focus down, swap container with mark "_swap", focus down, unmark "_swap"
 bindsym $mod+Up mark --add "_swap", focus up, swap container with mark "_swap", focus up, unmark "_swap"
 bindsym $mod+Right mark --add "_swap", focus right, swap container with mark "_swap", focus right, unmark "_swap"
+
+workspace 1 output $left_monitor
+workspace 2 output $left_monitor
+workspace 3 output $left_monitor
+
+workspace 4 output $middle_monitor
+workspace 5 output $middle_monitor
+workspace 6 output $middle_monitor
+workspace 7 output $middle_monitor
+
+workspace 8 output $right_monitor
+workspace 9 output $right_monitor
+workspace 10 output $right_monitor
 
 bindsym $mod+1 workspace number 1
 bindsym $mod+2 workspace number 2
@@ -103,8 +120,8 @@ bar {
 }
 
 bar {
-    output HDMI-A-1 
-    output DP-1 
+    output $left_monitor 
+    output $right_monitor 
     position top
     workspace_buttons yes
 }
