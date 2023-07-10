@@ -72,14 +72,14 @@ bindsym $mod+Right mark --add "_swap", focus right, swap container with mark "_s
 
 workspace 1 output $left_monitor
 workspace 2 output $left_monitor
-workspace 3 output $left_monitor
 
+workspace 3 output $middle_monitor
 workspace 4 output $middle_monitor
 workspace 5 output $middle_monitor
 workspace 6 output $middle_monitor
 workspace 7 output $middle_monitor
+workspace 8 output $middle_monitor
 
-workspace 8 output $right_monitor
 workspace 9 output $right_monitor
 workspace 10 output $right_monitor
 
