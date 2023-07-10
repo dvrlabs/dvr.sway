@@ -10,7 +10,8 @@ set $files nautilus
 set $web firefox -new-window -P default-release
 set $chat discord
 set $launcher wofi --show run
-set $shellcmd bash -c 'bash -ic "$(wofi --dmenu)"'
+set $shellcmd bash -c 'bash -ic "$(wofi --style=run_terminal_cmd_style.css --dmenu)"'
+
 set $wobsock /tmp/wob.sock
 set $mic 'alsa_input.usb-GeneralPlus_USB_Audio_Device-00.mono-fallback'
 set $fake_speaker_mic 'alsa_input.usb-GeneralPlus_USB_Audio_Device-00.mono-fallback.2'

@@ -1,0 +1,11 @@
+* {
+    background-color: rgba(0, 0, 0, 0);
+    border-color: rgba(0, 0, 0, 0);
+    box-shadow: none;
+}
+
+#input {
+    background-color: #3D3D3D;
+    color: #FFFFFF;
+    border-color: #1A1A1A;
+}
