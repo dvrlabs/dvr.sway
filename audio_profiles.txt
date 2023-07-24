@@ -1,0 +1,4 @@
+2973 Active Profile: off
+2974 Active Profile: off
+2975 Active Profile: output:analog-stereo
+2976 Active Profile: output:iec958-stereo+input:mono-fallback

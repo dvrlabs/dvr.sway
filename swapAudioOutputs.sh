@@ -28,4 +28,4 @@ for input in $(pactl list short sink-inputs | cut -f1); do
     pactl move-sink-input "$input" ${sink_names[$next_sink_index]}
 done
 
-notify-send -u critical "Swapped Audio Output." && sleep 1 && pkill mako
+#notify-send -u critical "Swapped Audio Output." && sleep 1 && pkill mako

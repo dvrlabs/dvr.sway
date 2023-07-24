@@ -13,7 +13,7 @@ MUTE_STATUS=$(pactl list sources | awk -v name="$MIC_NAME" '/Name:/{flag=0} $0 ~
 if [ "$MUTE_STATUS" = 'yes' ]; then
     echo 0 > $SOCK_PATH
 else
-    pactl set-source-volume "$MIC_NAME" 80%
-    echo 80 > $SOCK_PATH
+    pactl set-source-volume "$MIC_NAME" 100%
+    echo 100 > $SOCK_PATH
 fi
 
