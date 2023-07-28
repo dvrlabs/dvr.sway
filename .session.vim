@@ -13,11 +13,11 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +1 run_terminal_cmd_style.css
+badd +1 config
 argglobal
 %argdel
-$argadd run_terminal_cmd_style.css
-edit run_terminal_cmd_style.css
+$argadd config
+edit config
 wincmd t
 let s:save_winminheight = &winminheight
 let s:save_winminwidth = &winminwidth

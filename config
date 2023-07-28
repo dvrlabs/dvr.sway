@@ -6,7 +6,7 @@ set $up k
 set $right l
 
 set $term wezterm
-set $files nautilus
+set $files nautilus -w
 set $web firefox -new-window -P default-release
 set $chat discord
 set $launcher wofi --show run
@@ -18,7 +18,7 @@ set $fake_speaker_mic 'alsa_input.usb-GeneralPlus_USB_Audio_Device-00.mono-fallb
 
 set $left_monitor HDMI-A-1 
 set $middle_monitor DVI-D-1
-set $right_monitor DP-1
+#set $right_monitor DP-1
 
 exec_always --no-startup-id mako
 exec_always --no-startup-id pactl set-source-mute $fake_speaker_mic 1
@@ -29,11 +29,11 @@ for_window [title="Form"] floating enable
 
 output $left_monitor bg ~/Pictures/wallpapers/pjjob.png fill
 output $middle_monitor bg ~/Pictures/wallpapers/threeseasons.jpg fill
-output $right_monitor bg ~/Pictures/wallpapers/mountain.jpg fill
+#output $right_monitor bg ~/Pictures/wallpapers/mountain.jpg fill
 
 output $left_monitor resolution 1920x1080 position 0,0 transform 270
 output $middle_monitor resolution 1920x1080 position 1080,489 
-output $right_monitor resolution 1920x1080 position 3000,700
+#output $right_monitor resolution 1920x1080 position 3000,700
 
 client.focused #00CED1 #285577 #ffffff #2e9ef4 #00CED1
 default_border pixel 3
@@ -82,9 +82,8 @@ workspace 5 output $middle_monitor
 workspace 6 output $middle_monitor
 workspace 7 output $middle_monitor
 workspace 8 output $middle_monitor
-
-workspace 9 output $right_monitor
-workspace 10 output $right_monitor
+workspace 9 output $middle_monitor
+workspace 10 output $middle_monitor
 
 bindsym $mod+1 workspace number 1
 bindsym $mod+2 workspace number 2
@@ -124,7 +123,7 @@ bar {
 
 bar {
     output $left_monitor 
-    output $right_monitor 
+    #output $right_monitor 
     position top
     workspace_buttons yes
 }

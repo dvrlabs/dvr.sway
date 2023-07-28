@@ -1,4 +1,3 @@
-2973 Active Profile: off
-2974 Active Profile: off
-2975 Active Profile: output:analog-stereo
-2976 Active Profile: output:iec958-stereo+input:mono-fallback
+1448 Active Profile: off
+1450 Active Profile: output:iec958-stereo+input:mono-fallback
+1451 Active Profile: output:analog-stereo
