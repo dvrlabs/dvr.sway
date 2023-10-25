@@ -62,20 +62,20 @@ bindsym $mod+$left focus left
 bindsym $mod+$down focus down
 bindsym $mod+$up focus up
 bindsym $mod+$right focus right
-bindsym $mod+Control+$left workspace prev
-bindsym $mod+Control+$right workspace next 
-bindsym $mod+Shift+$left move left
-bindsym $mod+Shift+$down move down
-bindsym $mod+Shift+$up move up
-bindsym $mod+Shift+$right move right
+bindsym $mod+Control+$left move left
+bindsym $mod+Control+$down move down
+bindsym $mod+Control+$up move up
+bindsym $mod+Control+$right move right
+bindsym $mod+Shift+$left workspace prev
+bindsym $mod+Shift+$right workspace next
 bindsym $mod+Left mark --add "_swap", focus left, swap container with mark "_swap", focus left, unmark "_swap"
 bindsym $mod+Down mark --add "_swap", focus down, swap container with mark "_swap", focus down, unmark "_swap"
 bindsym $mod+Up mark --add "_swap", focus up, swap container with mark "_swap", focus up, unmark "_swap"
 bindsym $mod+Right mark --add "_swap", focus right, swap container with mark "_swap", focus right, unmark "_swap"
 
 workspace 1 output $left_monitor
-workspace 2 output $left_monitor
 
+workspace 2 output $middle_monitor
 workspace 3 output $middle_monitor
 workspace 4 output $middle_monitor
 workspace 5 output $middle_monitor
@@ -115,8 +115,8 @@ bindsym $mod+b layout tabbed
 bindsym $mod+f floating toggle
 bindsym $mod+m fullscreen
 
-bindsym $mod+Shift+minus move scratchpad
-bindsym $mod+minus scratchpad show
+bindsym $mod+Shift+p move scratchpad
+bindsym $mod+p scratchpad show
 
 bar {
     swaybar_command waybar
