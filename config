@@ -23,6 +23,7 @@ set $right_monitor DP-2
 exec_always --no-startup-id mako
 exec_always --no-startup-id pactl set-source-mute $fake_speaker_mic 1
 exec_always ~/.config/sway/createWobSocket.sh &
+exec_always ~/.config/waybar/startWaybar.sh & 
 
 for_window [title="Firefox — Sharing Indicator"] kill;
 for_window [title="Form"] floating enable
@@ -118,9 +119,9 @@ bindsym $mod+m fullscreen
 bindsym $mod+Shift+p move scratchpad
 bindsym $mod+p scratchpad show
 
-bar {
-    swaybar_command waybar
-}
+# bar {
+#     swaybar_command waybar
+# }
 
 bar {
     output $left_monitor 
