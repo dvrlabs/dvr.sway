@@ -18,7 +18,7 @@ set $fake_speaker_mic 'alsa_input.usb-GeneralPlus_USB_Audio_Device-00.mono-fallb
 
 set $left_monitor HDMI-A-1 
 set $middle_monitor DVI-D-1
-set $right_monitor DP-2
+set $right_monitor DP-1
 
 exec_always --no-startup-id mako
 exec_always --no-startup-id pactl set-source-mute $fake_speaker_mic 1
