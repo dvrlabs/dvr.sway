@@ -136,3 +136,4 @@ include /etc/sway/config.d/*
 
 
 exec_always ~/.config/waybar/startWaybar.sh & 
+exec_always ~/.config/sway/startFirefox.sh & 
