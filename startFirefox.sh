@@ -11,7 +11,7 @@ firefox -new-window -P default-release \
         -new-tab $URL3 \
         -new-tab $URL4 & 
 
-sleep 5
+sleep 30
 
 TITLE='[title="'$(swaymsg -t get_tree | jq -r '.nodes[].nodes[].nodes[] | select(.app_id == "firefox") | .name' | head -n 1)'"]'
 MOVE='move container to workspace "1"'
