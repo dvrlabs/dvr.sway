@@ -26,6 +26,7 @@ exec_always ~/.config/sway/createWobSocket.sh &
 
 for_window [title="Firefox — Sharing Indicator"] kill;
 for_window [title="Form"] floating enable
+for_window [title="HV-SmartRack® Remote Front Panel"] floating enable
 #for_window [title="HV-Bench"] floating enable 
 assign [title="HV-Bench"] 10
 
